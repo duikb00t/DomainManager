@@ -11,9 +11,9 @@ return array(
 
     'encryption' => 'tls',
 
-    'username' => 'dekennes',
+    'username' => getenv('GMAIL_USERNAME'),
 
-    'password' => 'snahnb8p',
+    'password' => getenv('GMAIL_PASSWORD'),
 
     'sendmail' => '/usr/sbin/sendmail -bs',
 
