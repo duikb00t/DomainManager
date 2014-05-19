@@ -13,10 +13,12 @@
 
         <!-- Jquery -->
         {{ HTML::script('js/jquery.1.10.2.js'); }}
+        {{ HTML::script('js/bootstrap-datepicker.js'); }}
 
         <!-- Bootstrap Core CSS -->
         {{ HTML::style('css/bootstrap.min.css'); }}
         {{ HTML::style('css/freelancer.css'); }}
+        {{ HTML::style('css/datepicker.css'); }}
 
         <!-- Fonts -->
         {{ HTML::style('freelancer/font-awesome/css/font-awesome.min.css'); }}
@@ -30,6 +32,8 @@
 
             <h1>Castel Domain Manager</h1>
             @if(Auth::check())
+                <a class="btn btn-default text-right" href="{{URL::action('DomainController@add')}}">Management</a>
+                <a class="btn btn-default text-right" href="{{URL::action('DomainController@add')}}">Add a new domain</a>
                 <a class="btn btn-mini btn-warning text-right" href="{{URL::action('UserController@destroy')}}">Logout</a>
             @endif
 

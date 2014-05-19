@@ -14,32 +14,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
 	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password');
-
-	/**
-	 * Get the unique identifier for the user.
-	 *
-	 * @return mixed
-	 */
-	public function getAuthIdentifier()
-	{
-		return $this->getKey();
-	}
-
-	/**
-	 * Get the password for the user.
-	 *
-	 * @return string
-	 */
-	public function getAuthPassword()
-	{
-		return $this->password;
-	}
-
+ * The attributes excluded from the model's JSON form._)(*RTEWQSA
 	/**
 	 * Get the token value for the "remember me" session.
 	 *
