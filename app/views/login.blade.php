@@ -4,6 +4,17 @@
 
 <h4>Login</h4>
 
+
+@if ( $errors->count() > 0 )
+<hr />
+<h5>The following errors have occurred:</h5>
+
+@foreach( $errors->all() as $message )
+<div class="alert alert-danger">{{ $message }}</div>
+@endforeach
+@endif
+
+
 @if(Session::has('success'))
     <div class="alert alert-success">
         {{ Session::get('success') }}

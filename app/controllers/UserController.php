@@ -54,16 +54,14 @@ class UserController extends \BaseController {
 
             if(Auth::attempt($userData)) {
                 if(Auth::check()){
-                    //$user_id = Auth::user()->id;
-                    //echo 'logged in..'. $user_id;
-
                     return Redirect::to('home');
-
                 }else{
-                    echo ' something went wrong while checking... ';
+                    $messages = 'Username or password incorrcet';
+                    return Redirect::to('user/login')->withErrors($messages);
                 }
             }else{
-                echo 'something went wrong';
+                $messages = 'Username or password incorrcet';
+                return Redirect::to('user/login')->withErrors($messages);
             }
         }
     }
@@ -101,11 +99,9 @@ class UserController extends \BaseController {
              if($user->save()){
                  Mail::send('emails.confirmation', $data, function($message)
                  {
-
                     $message->from(getenv('DEFAULT_FROM_EMAIL_ADDRESS'), getenv('DEFAULT_FROM_NAME'));
                     $message->to(Input::get('email_address'), getenv('DEFAULT_FROM_NAME'))->subject('Welcome!');
                     return Redirect::to('user/login');
-
                  });
 
                  return Redirect::to('user/login')->with('success', 'You can now login with your account.');

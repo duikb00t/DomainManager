@@ -11,6 +11,15 @@
     het spreidingsplan voor de luchthaven van Zaventem. Dat heeft hij vanmorgen gezegd in 'De Ochtend' op Radio 1.
 </p>
 
+@if ( $errors->count() > 0 )
+<hr />
+<h5>The following errors have occurred:</h5>
+
+@foreach( $errors->all() as $message )
+<div class="alert alert-danger">{{ $message }}</div>
+@endforeach
+@endif
+
 {{ Form::open(array('files' => true, 'url' => url('add'), 'class'=>'form-horizontal')) }}
 
 {{ Form::label('Registered From:') }}
@@ -48,9 +57,6 @@
                 console.log('The end date cannot be small then the start date..');
             }
         });
-
-
-
     });
 
 </script>

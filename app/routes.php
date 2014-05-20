@@ -1,6 +1,7 @@
 <?php
 /**
  * Not authenticated yet...
+ *
  */
 Route::get('user/login', 'UserController@createLoginForm');
 Route::post('user/login', 'UserController@validateLoginForme');
@@ -15,6 +16,7 @@ Route::get('/', function()
 
 /**
  * When authenticated...
+ *
  */
 Route::group(array('before' => 'auth'), function()
 {
@@ -27,6 +29,5 @@ Route::group(array('before' => 'auth'), function()
 
     Route::get('add', 'DomainController@add');
     Route::post('add', 'DomainController@validateDomain');
-
 
 });

@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Domain extends Eloquent implements UserInterface, RemindableInterface {
+
+class Domain extends Eloquent {
 
     /**
      * The database table used by the model
@@ -13,6 +12,12 @@ class Domain extends Eloquent implements UserInterface, RemindableInterface {
 
     protected $table = 'domains';
 
-
-
+    /**
+     * Validate the add domain form
+     */
+    public static $rules_add_domain = array(
+        'from'  => 'required',
+        'until'  => 'required',
+        'domain'  => 'required|url'
+    );
 }

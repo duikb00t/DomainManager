@@ -1,15 +1,49 @@
 <?php
 
+use Carbon\Carbon;
+
 class DomainController extends \BaseController {
 
-    public function add(){
+    public function add() {
         return View::make('domains.add');
     }
 
-    public function validateDomain(){
-        $input = Input::get();
-        echo 'validate the domain...';
-        dd($input);
+    public function validateDomain() {
+
+        $input = Input::all();
+
+        //$inputFile = Input::file();
+
+        $rules = Domain::$rules_add_domain;
+
+        $validator = Validator::make($input,$rules);
+
+        if($validator->fails()){
+
+            $messages = $validator->messages();
+
+            return Redirect::to('add')->withErrors($messages);
+
+        }else{
+
+            $fromDate = Helper::dateToMySQL(Input::get('from'));
+            $untilDate = Helper::dateToMySQL(Input::get('until'));
+
+            $domain = new Domain();
+            $domain->from = $fromDate;
+            $domain->until = $untilDate;
+            $domain->domain = Input::get('domain');
+
+
+            if($domain->save())
+            {
+                echo 'success your domain is stored in our system.';
+            }
+            else
+            {
+                echo 'Something went wrong... Please contact a system administrator.';
+            }
+        }
     }
 
 
