@@ -53,20 +53,6 @@ return array(
 		),
 
 
-
-        /**
-        'mysql' => array(
-        'driver'    => 'mysql',
-        'host'      => 'localhost',
-        'database'  => '2014_domainmanager',
-        'username'  => 'root',
-        'password'  => 'root',
-        'charset'   => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'prefix'    => '',
-        ),
-         **/
-
         'mysql' => array(
             'driver'    => 'mysql',
             'host'      => getenv("DB_HOST"),

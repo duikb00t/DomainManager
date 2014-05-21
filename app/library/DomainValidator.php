@@ -12,17 +12,20 @@ prot
  * Public Static function
  *
  */
+    public function validator($input,$rules){
 
-     public function validator($input,$rules)
-     {
         $validation = \Validation::make($this->input,Domain::$rules_add_domain);
 
-         if ($validator->passes())
-         {
-             return true;
-         }else{
-             $this->errors->merge($validator->messages());
-             return false;
+        if ($validator->passes())
+        {
+
+            return true;
+
+        }
+        else
+        {
+            $this->errors->merge($validator->messages());
+            return false;
          }
      }
  }
